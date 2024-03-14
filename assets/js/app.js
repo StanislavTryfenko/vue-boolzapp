@@ -132,6 +132,8 @@ createApp({
             activeContact: 0,
 
             newMessageText: '',
+
+            searchContactText: '',
         }
     },
     methods: {
@@ -154,10 +156,15 @@ createApp({
                 });
             }, 1000);   
         },
-        removeMessage(index){
-            this.contacts[activeContact].splice(index, 1)
-        },
 
+        /* removeMessage(index){
+            this.contacts[this.activeContact].message.splice(index, 1)
+        }, */ //TO DO IN MILESTONE 5
+
+        searchContact() {
+            this.contacts.forEach(contact => contact.visible = contact.name.toLowerCase().startsWith(this.searchContactText.toLowerCase()) ? true : false);
+            //console.log(contact.name.toLowerCase(), this.searchContactText.toLowerCase(), contact.visible);
+        },
     },
     mounted() {
         console.log(this.activeContact);

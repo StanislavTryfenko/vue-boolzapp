@@ -106,7 +106,6 @@ h5{
 
         .search-bar{
             background-color: var(--bool-bg-input-msg);
-            display: flex;
             gap: 1rem;
             border-radius: 2px;
             border: 1px solid var(--bool-gray);
@@ -114,9 +113,11 @@ h5{
             padding-left: 1.5rem;
     
             input{
-                width: 75%;
+                width: 90%;
                 border: none;
+                padding: 0;
             }
+            
         }
     }
 
@@ -138,6 +139,10 @@ h5{
                 top: 1.5rem;
                 right: 1rem;
             }
+        }
+
+        .contact-card-hidden{
+            display: none;
         }
     }
 }
@@ -195,7 +200,7 @@ h5{
     
     .chat-input{
         height: 5rem;
-        align-self: flex-end;
+        align-self: flex-start;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
