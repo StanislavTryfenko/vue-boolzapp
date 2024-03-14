@@ -1,0 +1,300 @@
+
+:root{
+    --bool-white: rgba(234, 234, 234, 1);
+    --bool-black: black;
+    --bool-gray: rgba(220, 219, 210, 1);
+    --bool-bg-body-top: rgba(0, 150, 136, 1);
+    --bool-bg-body-bottom: rgba(177, 177, 177, 1);
+    --bool-bg-output-msg: rgba(213, 249, 186, 1);
+    --bool-bg-input-msg: rgba(255, 255, 255, 1);
+    --bool-bg-banner: rgba(142, 218, 252, 1);
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* border: 1px solid black ; */
+}
+
+/* #region common & .container */
+
+body{
+    background-image: linear-gradient(var(--bool-bg-body-top) calc(5vh + 6rem), calc(5vh + 6rem), var(--bool-bg-body-bottom) 80%);
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'PT Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+header{
+    background-color: var(--bool-white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5rem;
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    padding-right: 1rem;
+}
+
+img{
+    border-radius: 50%;
+    object-fit: cover;
+    aspect-ratio: 1;
+    width: 4rem;
+    margin-left: 1rem;
+}
+
+i{
+    color: var(--bool-bg-body-bottom);
+}
+
+h5{
+    opacity: 0.5;
+    margin-top: 0.3rem;
+}
+
+.container{
+    margin: 5vh auto;
+    display: flex;
+    width: 80%;
+    height: 90vh;
+}
+/* #endregion */
+
+.left{
+    width: 35%;
+
+    header{
+        border-right: 2px solid var(--bool-gray);
+    }
+
+    .banner{
+        height: 6rem;
+        background-color: var(--bool-bg-banner);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        i{
+        aspect-ratio: 1;
+        padding: 1rem;
+        border-radius: 50%;
+        margin-left: 1rem;
+        background-color: var(--bool-bg-input-msg);
+        color: var(--bool-bg-banner);
+        padding-top: 1.7rem;
+        }
+
+        a{
+            color: var(--bool-black);
+        }
+        @media (max-width:991px){
+            display: none;
+        }
+    }
+
+    .search{
+        height: 3.5rem;
+        background-color: var(--bool-white);
+        padding: 0.5rem;
+
+        .search-bar{
+            background-color: var(--bool-bg-input-msg);
+            display: flex;
+            gap: 1rem;
+            border-radius: 2px;
+            border: 1px solid var(--bool-gray);
+            padding: 0.5rem;
+            padding-left: 1.5rem;
+    
+            input{
+                width: 75%;
+                border: none;
+            }
+        }
+    }
+
+    .contacts{
+        overflow-y: scroll;
+        height: calc(100% - 14.5rem);
+        background-color: var(--bool-bg-input-msg);
+
+        .contact-card{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            position: relative;
+            border-bottom: 1px solid var(--bool-white);
+
+            .contact-time{
+                position: absolute;
+                top: 1.5rem;
+                right: 1rem;
+            }
+        }
+    }
+}
+
+.right{
+    width: 65%;
+
+    .chat-info{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .chat-log{
+        height: calc(100% - 10rem);
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.75rem 1.5rem;
+        background-image: url(../img/chat-bg.jpg);
+        overflow-y: scroll;
+
+        .output{
+            background-color: var(--bool-bg-output-msg);
+            align-self: flex-end;
+            max-width: 66%;
+            padding: 0.75rem 1.5rem 0.75rem 0.75rem;
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .input{
+            background-color: var(--bool-bg-input-msg);
+            align-self: flex-start;
+            max-width: 66%;
+            padding: 0.75rem 1.5rem 0.75rem 0.75rem;
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .msg-info{
+            position: absolute;
+            top: 4%;
+            right: 2%;
+           
+        }
+        
+        .msg-time{
+            position: absolute;
+            bottom: 3%;
+            right: 2%;
+            opacity: 0.5;
+        }
+    }
+    
+    .chat-input{
+        height: 5rem;
+        align-self: flex-end;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        background-color: var(--bool-white);
+        border-left: 2px solid var(--bool-gray);
+        
+        input{
+            width: 75%;
+            padding: 1.25rem  0;
+            border-radius: 8px;
+            border: none;
+        }
+
+        i{
+            color: var(--bool-black);
+        }
+    }
+}
+
+
+@media screen and (max-width: 991px) {
+    
+    .container{
+        margin: 0;
+        width: 100%;
+        height: 100vh;
+    }
+    
+    .d-none{
+        display: none;
+    }
+    
+    .left{
+        width: 6rem;
+        &> header{
+            width: 6rem;
+        }
+        &> .contacts{
+            height: calc(100% - 5rem);
+        }
+    }
+    
+    .contacts{
+        width: 6rem;
+        height: calc(100% - 5rem);
+    }
+    
+    .right{
+        width: calc(100% - 6rem);
+    }
+}
+
+@media screen and (max-width: 540px) {
+    
+    .d-none-2x{
+        display: none;
+    }
+    
+    .right{
+        width: 100%;
+        header{
+            width: 100%;
+        }
+    }
+    
+    .output, .input{
+        max-width: 80%;
+    }
+    
+    .chat-input{
+        width: 100%;
+        input{
+            width: 90%;
+        }
+    }
+}
+
+/* BONUS */
+
+.hidden:hover .msg-options {
+    display: block;
+}
+
+.msg-options{
+    display: none;
+    position: absolute;
+    right: 0;
+    padding: 1rem;
+    background-color: white;
+    z-index: 10;
+    text-align: center;
+    width: max-content;
+
+    & ul{
+        flex-direction: column;
+    }
+
+    & li{
+        padding: 0.25rem 0.5rem 0.25rem 0.1rem;
+        color: black;
+    }
+}
