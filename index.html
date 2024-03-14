@@ -46,7 +46,7 @@
 
             <div class="contacts">
                 <div class="contact-card" v-for="(contact, index) in contacts">
-                    <img src="./assets/img/contact1.jpg" alt="">
+                    <img :src="'./assets/img/' + contact.avatar" alt="">
                     <div class="d-none">
                         <h4>{{contact.name}}</h4>
                         <h5>{{contact.messages[0].message}}</h5>
@@ -77,8 +77,10 @@
                 </nav>
             </header>
 
-            <div class="chat-log">
-                <div class="output">
+            <div class="chat-log" >
+
+                
+                <!-- <div class="output">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quaerat atque perferendis? Accusantium, amet labore! Cupiditate sunt recusandae ut placeat dolorem aperiam, tenetur voluptatibus id. Assumenda officia earum quia deserunt.</p>
                     <div class="msg-info">
                         <a href="" class="hidden ">
@@ -106,7 +108,7 @@
                     <div class="msg-time">
                         <h6> 16:15</h6>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <form method="get">
