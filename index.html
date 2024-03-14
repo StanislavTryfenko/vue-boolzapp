@@ -77,8 +77,7 @@
                 </nav>
             </header>
 
-            <div class="chat-log" v-bind="contacts[activeContact]">
-
+            <div class="chat-log">
                 <template v-for="(message, index) in contacts[activeContact].messages" :key="index">
                     <div class="output" v-if="message.status === 'sent'">
                         <p>{{message.message}}</p>
@@ -100,8 +99,17 @@
                     </div>
                    
                     <div class="input" v-if="message.status === 'received'">
-                        <p>{{message.message}}</p>                        <div class="msg-info">
-                            <a href=""><i class="fa-solid fa-chevron-down"></i></a>
+                        <p>{{message.message}}</p>                        
+                        <div class="msg-info">
+                            <a aria-disabled="true" class="hidden">
+                                <i class="fa-solid fa-chevron-down"></i>
+                                <div class="msg-options">
+                                    <ul>
+                                        <li><h4>Info messaggio</h4></li>
+                                        <li><h4>Cancella messaggio</h4></li>
+                                    </ul>
+                                </div>
+                            </a>
                         </div>
     
                         <div class="msg-time">
@@ -109,41 +117,12 @@
                         </div>
                     </div>
                 </template>
-                <!-- <div class="output">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quaerat atque perferendis? Accusantium, amet labore! Cupiditate sunt recusandae ut placeat dolorem aperiam, tenetur voluptatibus id. Assumenda officia earum quia deserunt.</p>
-                    <div class="msg-info">
-                        <a href="" class="hidden ">
-                            <i class="fa-solid fa-chevron-down"></i>
-                            <div class="msg-options">
-                                <ul>
-                                    <li><h4>Info messaggio</h4></li>
-                                    <li><h4>Cancella messaggio</h4></li>
-                                </ul>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="msg-time">
-                        <h6> 16:13</h6>
-                    </div>
-                </div>
-
-                <div class="input">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis animi laudantium eos provident temporibus voluptatum dolore dolorum ab optio. Quibusdam vel ab aperiam repellendus non architecto velit quos consequatur quisquam.</p>
-                    <div class="msg-info">
-                        <a href=""><i class="fa-solid fa-chevron-down"></i></a>
-                    </div>
-
-                    <div class="msg-time">
-                        <h6> 16:15</h6>
-                    </div>
-                </div> -->
             </div>
 
-            <form method="get">
+            <form method="submit" @submit.prevent>
                 <div class="chat-input">
                     <a class="d-none-2x" href=""><i class="fa-regular fa-face-smile fa-2xl"></i></a>
-                    <input type="text" name="" id="" placeholder="  Scrivi un messaggio">
+                    <input type="text" placeholder="  Scrivi un messaggio" v-model.trim="newMessageText" @keyup.enter="newMessage()">
                     <a class="d-none-2x" href=""><i class="fa-solid fa-microphone fa-2xl"></i></a>
                 </div>
             </form>
