@@ -158,14 +158,15 @@ createApp({
         },
 
         removeMessage(index){
-            this.contacts[this.activeContact].messages.splice(index, 1)
+            this.contacts[this.activeContact].messages.splice(index, 1,  {
+                date: this.contacts[this.activeContact].messages[index].date,
+                message: 'Questo messaggio è stato rimosso',
+                status: this.contacts[this.activeContact].messages[index].status,
+            });
         },
 
         searchContact() {
             this.contacts.forEach(contact => contact.visible = contact.name.toLowerCase().startsWith(this.searchContactText.toLowerCase()) ? true : false);
         },
-    },
-    mounted() {
-        console.log(this.activeContact);
     },
 }).mount('#app')

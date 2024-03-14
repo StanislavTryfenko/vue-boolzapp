@@ -13,16 +13,14 @@
 <body>
 
     <main class="container" id="app">
-
         <div class="left d-none-2x">
-
             <header>
-                <img src="./assets/img/self-img.jpg" alt="">
+                <img src="./assets/img/self-img.jpg">
                 <nav class="d-none">
                     <ul>
-                        <li><a href=""><i class="fa-solid fa-circle-notch fa-lg"></i></a></li>
-                        <li><a href=""><i class="fa-solid fa-message fa-lg"></i></a></li>
-                        <li><a href=""><i class="fa-solid fa-ellipsis-vertical fa-lg"></i></a></li>
+                        <li><a aria-disabled="true"><i class="fa-solid fa-circle-notch fa-lg"></i></a></li>
+                        <li><a aria-disabled="true"><i class="fa-solid fa-message fa-lg"></i></a></li>
+                        <li><a aria-disabled="true"><i class="fa-solid fa-ellipsis-vertical fa-lg"></i></a></li>
                     </ul>
                 </nav>
             </header>
@@ -31,7 +29,7 @@
                 <i class="fa-solid fa-bell-slash fa-lg"></i>
                 <div>
                     <h3>Ricevi notifiche di nuovi messaggi</h3>
-                    <a href="">Attiva notifiche desktop</a>
+                    <a aria-disabled="true">Attiva notifiche desktop</a>
                 </div>
             </div>
 
@@ -46,7 +44,7 @@
 
             <div class="contacts" >
                 <div :class="contact.visible === true ? 'contact-card' : 'contact-card-hidden'" v-for="(contact, index) in contacts" @click="activeContact = index" >
-                    <img :src="'./assets/img/' + contact.avatar" alt="">
+                    <img :src="'./assets/img/' + contact.avatar">
                     <div class="d-none">
                         <h4>{{contact.name}}</h4>
                         <h5>{{contact.messages[0].message}}</h5>
@@ -61,7 +59,7 @@
         <div class="right">
             <header>
                 <div class="chat-info">
-                    <img :src="'./assets/img/' + contacts[activeContact].avatar" alt="">
+                    <img :src="'./assets/img/' + contacts[activeContact].avatar">
                     <div>
                         <h4>{{contacts[activeContact].name}}</h4>
                         <h5>Ultimo accesso {{contacts[activeContact].messages[0].date}} DA FIXARE CON LUXON</h5>
@@ -70,9 +68,9 @@
 
                 <nav class="d-none-2x">
                     <ul>
-                        <li><a href=""><i class="fa-solid fa-magnifying-glass fa-lg"></i></a></li>
-                        <li><a href=""><i class="fa-solid fa-paperclip fa-lg"></i></a></li>
-                        <li><a href=""><i class="fa-solid fa-ellipsis-vertical fa-lg"></i></a></li>
+                        <li><a aria-disabled="true"><i class="fa-solid fa-magnifying-glass fa-lg"></i></a></li>
+                        <li><a aria-disabled="true"><i class="fa-solid fa-paperclip fa-lg"></i></a></li>
+                        <li><a aria-disabled="true"><i class="fa-solid fa-ellipsis-vertical fa-lg"></i></a></li>
                     </ul>
                 </nav>
             </header>
@@ -121,9 +119,9 @@
 
             <form method="submit" @submit.prevent>
                 <div class="chat-input">
-                    <a class="d-none-2x" href=""><i class="fa-regular fa-face-smile fa-2xl"></i></a>
+                    <a class="d-none-2x" aria-disabled="true"><i class="fa-regular fa-face-smile fa-2xl"></i></a>
                     <input type="text" placeholder="  Scrivi un messaggio" v-model.trim="newMessageText" @keyup.enter="newMessage()">
-                    <a class="d-none-2x" href=""><i class="fa-solid fa-microphone fa-2xl"></i></a>
+                    <a class="d-none-2x" aria-disabled="true"><i class="fa-solid fa-microphone fa-2xl"></i></a>
                 </div>
             </form>
         </div>
