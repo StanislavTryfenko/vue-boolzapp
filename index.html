@@ -45,91 +45,14 @@
             </div>
 
             <div class="contacts">
-                <div class="contact-card">
+                <div class="contact-card" v-for="(contact, index) in contacts">
                     <img src="./assets/img/contact1.jpg" alt="">
                     <div class="d-none">
-                        <h4>Michele</h4>
-                        <h5>Lorem ipsum dolor sit.</h5>
+                        <h4>{{contact.name}}</h4>
+                        <h5>{{contact.messages[0].message}}</h5>
                         <div class="contact-time">
-                            <h5>16:15</h5>
+                            <h5>{{contact.messages[0].date}}</h5>
                         </div>
-                    </div>
-                </div>
-
-                <div class="contact-card">
-                    <img src="./assets/img/contact2.jpg" alt="">
-                    <div class="d-none">
-                        <h4>Fabio</h4>
-                        <h5>Lorem ipsum dolor sit.</h5>
-                        <div class="contact-time">
-                            <h5>16:05</h5>
-                        </div>  
-                    </div>
-                </div>
-
-                <div class="contact-card">
-                    <img src="./assets/img/contact3.jpg" alt="">
-                    <div class="d-none">
-                        <h4>Samuele</h4>
-                        <h5>Lorem ipsum dolor sit.</h5>
-                        <div class="contact-time">
-                            <h5>16:03</h5>
-                        </div>  
-                    </div>
-                </div>
-
-                <div class="contact-card">
-                    <img src="./assets/img/contact4.jpg" alt="">
-                    <div class="d-none">
-                        <h4>Alessandro B.</h4>
-                        <h5>Lorem ipsum dolor sit.</h5>
-                        <div class="contact-time">
-                            <h5>15:50</h5>
-                        </div>  
-                    </div>
-                </div>
-
-                <div class="contact-card">
-                    <img src="./assets/img/contact5.jpg" alt="">
-                    <div class="d-none">
-                        <h4>Alessandro L.</h4>
-                        <h5>Lorem ipsum dolor sit.</h5>
-                        <div class="contact-time">
-                            <h5>15:45</h5>
-                        </div>  
-                    </div>
-                </div>
-
-                <div class="contact-card">
-                    <img src="./assets/img/contact6.jpg" alt="">
-                    <div class="d-none">
-                        <h4>Michele</h4>
-                        <h5>Lorem ipsum dolor sit.</h5>
-                        <div class="contact-time">
-                            <h5>16:05</h5>
-                        </div>  
-                    </div>
-                </div>
-
-                <div class="contact-card">
-                    <img src="./assets/img/contact7.jpg" alt="">
-                    <div class="d-none">
-                        <h4>Michele</h4>
-                        <h5>Lorem ipsum dolor sit.</h5>
-                        <div class="contact-time">
-                            <h5>16:05</h5>
-                        </div>  
-                    </div>
-                </div>
-
-                <div class="contact-card">
-                    <img src="./assets/img/contact8.jpg" alt="">
-                    <div class="d-none">
-                        <h4>Michele</h4>
-                        <h5>Lorem ipsum dolor sit.</h5>
-                        <div class="contact-time">
-                            <h5>16:05</h5>
-                        </div>  
                     </div>
                 </div>
             </div>
@@ -195,5 +118,8 @@
             </form>
         </div>
     </main>
+
+    <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
+    <script src="./assets/js/app.js"></script>
 </body>
 </html>
