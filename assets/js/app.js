@@ -165,10 +165,14 @@ createApp({
                 }
                 ],
                 }
-                ]
+                ],
+            activeContact: 0,
         }
     },
     methods: {
         
+    },
+    mounted() {
+        console.log(this.activeContact);
     },
 }).mount('#app')

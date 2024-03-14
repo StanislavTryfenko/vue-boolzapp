@@ -45,7 +45,7 @@
             </div>
 
             <div class="contacts">
-                <div class="contact-card" v-for="(contact, index) in contacts">
+                <div class="contact-card" v-for="(contact, index) in contacts" @click="activeContact = index">
                     <img :src="'./assets/img/' + contact.avatar" alt="">
                     <div class="d-none">
                         <h4>{{contact.name}}</h4>
@@ -61,10 +61,10 @@
         <div class="right">
             <header>
                 <div class="chat-info">
-                    <img src="./assets/img/contact1.jpg" alt="">
+                    <img :src="'./assets/img/' + contacts[activeContact].avatar" alt="">
                     <div>
-                        <h4>Michele</h4>
-                        <h5>Ultimo accesso oggi alle 16:26</h5>
+                        <h4>{{contacts[activeContact].name}}</h4>
+                        <h5>Ultimo accesso {{contacts[activeContact].messages[0].date}} DA FIXARE CON LUXON</h5>
                     </div>
                 </div>
 
@@ -77,9 +77,38 @@
                 </nav>
             </header>
 
-            <div class="chat-log" >
+            <div class="chat-log" v-bind="contacts[activeContact]">
 
-                
+                <template v-for="(message, index) in contacts[activeContact].messages" :key="index">
+                    <div class="output" v-if="message.status === 'sent'">
+                        <p>{{message.message}}</p>
+                        <div class="msg-info">
+                            <a aria-disabled="true" class="hidden">
+                                <i class="fa-solid fa-chevron-down"></i>
+                                <div class="msg-options">
+                                    <ul>
+                                        <li><h4>Info messaggio</h4></li>
+                                        <li><h4>Cancella messaggio</h4></li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="msg-time">
+                            <h6>{{message.date}}</h6>
+                        </div>
+                    </div>
+                   
+                    <div class="input" v-if="message.status === 'received'">
+                        <p>{{message.message}}</p>                        <div class="msg-info">
+                            <a href=""><i class="fa-solid fa-chevron-down"></i></a>
+                        </div>
+    
+                        <div class="msg-time">
+                            <h6>{{message.date}}</h6>
+                        </div>
+                    </div>
+                </template>
                 <!-- <div class="output">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quaerat atque perferendis? Accusantium, amet labore! Cupiditate sunt recusandae ut placeat dolorem aperiam, tenetur voluptatibus id. Assumenda officia earum quia deserunt.</p>
                     <div class="msg-info">
