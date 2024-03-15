@@ -1,5 +1,6 @@
-const { createApp } = Vue
+const DateTime = luxon.DateTime;
 
+const { createApp } = Vue
 createApp({
     data(){
         return{
@@ -167,9 +168,16 @@ createApp({
 
         searchContact() {
             this.contacts.forEach(contact => contact.visible = contact.name.toLowerCase().startsWith(this.searchContactText.toLowerCase()) ? true : false);
+            window.onload = function() {
+            var chatLog = document.querySelector('.chat-log');
+            chatLog.scrollTop = chatLog.scrollHeight;
+          };
+        },
+
+        hourMinute(time) {
+            return DateTime.fromFormat(time, 'dd/MM/yyyy HH:mm:ss').toFormat('HH:mm');
         },
     },
     mounted() {
-
     },
 }).mount('#app')

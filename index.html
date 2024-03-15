@@ -49,7 +49,7 @@
                         <h4>{{contact.name}}</h4>
                         <h5>{{contact.messages.slice(-1)[0].message}}</h5>
                         <div class="contact-time">
-                            <h5>{{contact.messages[0].date}}</h5>
+                            <h5>{{hourMinute(contact.messages[0].date)}}</h5>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                     <img :src="'./assets/img/' + contacts[activeContact].avatar">
                     <div>
                         <h4>{{contacts[activeContact].name}}</h4>
-                        <h5>Ultimo accesso {{contacts[activeContact].messages[0].date}} DA FIXARE CON LUXON</h5>
+                        <h5>Ultimo accesso {{hourMinute(contacts[activeContact].messages[0].date)}}</h5>
                     </div>
                 </div>
 
@@ -75,10 +75,11 @@
                 </nav>
             </header>
 
-            <div class="chat-log">
+            <div class="chat-log" ><!-- v-on:scroll="startDown" -->
                 <template v-for="(message, index) in contacts[activeContact].messages" :key="index">
                     <div class="output" v-if="message.status.includes('sent')">
                         <p :class="{'removed': message.status.includes('removed')}">{{message.message}}</p>
+
                         <div class="msg-info" v-if="!message.status.includes('removed')">
                             <a aria-disabled="true" class="hidden">
                                 <i class="fa-solid fa-chevron-down"></i>
@@ -92,12 +93,13 @@
                         </div>
 
                         <div class="msg-time">
-                            <h6>{{message.date}}</h6>
+                            <h6>{{hourMinute(message.date)}}</h6>
                         </div>
                     </div>
                    
                     <div class="input" v-if="message.status.includes('received')">
-                        <p :class="{'removed': message.status.includes('removed')}">{{message.message}}</p>                        
+                        <p :class="{'removed': message.status.includes('removed')}">{{message.message}}</p>    
+
                         <div class="msg-info" v-if="!message.status.includes('removed')">
                             <a aria-disabled="true" class="hidden">
                                 <i class="fa-solid fa-chevron-down"></i>
@@ -111,7 +113,7 @@
                         </div>
     
                         <div class="msg-time">
-                            <h6>{{message.date}}</h6>
+                            <h6>{{hourMinute(message.date)}}</h6>
                         </div>
                     </div>
                 </template>
@@ -128,6 +130,7 @@
     </main>
 
     <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
     <script src="./assets/js/app.js"></script>
 </body>
 </html>
