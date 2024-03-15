@@ -77,9 +77,9 @@
 
             <div class="chat-log">
                 <template v-for="(message, index) in contacts[activeContact].messages" :key="index">
-                    <div class="output" v-if="message.status === 'sent'">
-                        <p>{{message.message}}</p>
-                        <div class="msg-info">
+                    <div class="output" v-if="message.status.includes('sent')">
+                        <p :class="{'removed': message.status.includes('removed')}">{{message.message}}</p>
+                        <div class="msg-info" v-if="!message.status.includes('removed')">
                             <a aria-disabled="true" class="hidden">
                                 <i class="fa-solid fa-chevron-down"></i>
                                 <div class="msg-options">
@@ -96,9 +96,9 @@
                         </div>
                     </div>
                    
-                    <div class="input" v-if="message.status === 'received'">
-                        <p>{{message.message}}</p>                        
-                        <div class="msg-info">
+                    <div class="input" v-if="message.status.includes('received')">
+                        <p :class="{'removed': message.status.includes('removed')}">{{message.message}}</p>                        
+                        <div class="msg-info" v-if="!message.status.includes('removed')">
                             <a aria-disabled="true" class="hidden">
                                 <i class="fa-solid fa-chevron-down"></i>
                                 <div class="msg-options">

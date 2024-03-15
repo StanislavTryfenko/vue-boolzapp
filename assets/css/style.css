@@ -183,6 +183,11 @@ h5{
             position: relative;
         }
 
+        .removed{
+            color: var(--bool-gray);
+            font-style: italic;
+        }
+
         .msg-info{
             position: absolute;
             top: 4%;

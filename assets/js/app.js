@@ -161,7 +161,7 @@ createApp({
             this.contacts[this.activeContact].messages.splice(index, 1,  {
                 date: this.contacts[this.activeContact].messages[index].date,
                 message: 'Questo messaggio è stato rimosso',
-                status: this.contacts[this.activeContact].messages[index].status,
+                status: this.contacts[this.activeContact].messages[index].status + 'removed',
             });
         },
 
@@ -170,6 +170,6 @@ createApp({
         },
     },
     mounted() {
-        console.log(this.contacts[7].messages.slice(-1)[0].message);
+
     },
 }).mount('#app')
