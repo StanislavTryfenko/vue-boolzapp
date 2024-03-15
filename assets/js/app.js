@@ -169,4 +169,7 @@ createApp({
             this.contacts.forEach(contact => contact.visible = contact.name.toLowerCase().startsWith(this.searchContactText.toLowerCase()) ? true : false);
         },
     },
+    mounted() {
+        console.log(this.contacts[7].messages.slice(-1)[0].message);
+    },
 }).mount('#app')

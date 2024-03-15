@@ -47,7 +47,7 @@
                     <img :src="'./assets/img/' + contact.avatar">
                     <div class="d-none">
                         <h4>{{contact.name}}</h4>
-                        <h5>{{contact.messages[0].message}}</h5>
+                        <h5>{{contact.messages.slice(-1)[0].message}}</h5>
                         <div class="contact-time">
                             <h5>{{contact.messages[0].date}}</h5>
                         </div>
