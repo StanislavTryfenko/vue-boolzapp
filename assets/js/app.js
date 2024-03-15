@@ -175,7 +175,7 @@ createApp({
         },
 
         hourMinute(time) {
-              return DateTime.fromFormat(time, 'dd/MM/yyyy HH:mm:ss').toFormat('HH:mm');
+            return DateTime.fromFormat(time, 'dd/MM/yyyy HH:mm:ss').toFormat('HH:mm');
         },
     },
     mounted() {

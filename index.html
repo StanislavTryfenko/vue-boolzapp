@@ -43,7 +43,9 @@
             </div>
 
             <div class="contacts" >
-                <div :class="contact.visible === true ? 'contact-card' : 'contact-card-hidden'" v-for="(contact, index) in contacts" @click="activeContact = index" >
+                <div :class="contact.visible === true ? 'contact-card' : 'contact-card-hidden'" 
+                v-for="(contact, index) in contacts" 
+                @click="activeContact = index" >
                     <img :src="'./assets/img/' + contact.avatar">
                     <div class="d-none">
                         <h4>{{contact.name}}</h4>
@@ -76,47 +78,26 @@
             </header>
 
             <div class="chat-log" ><!-- v-on:scroll="startDown" -->
-                <template v-for="(message, index) in contacts[activeContact].messages" :key="index">
-                    <div class="output" v-if="message.status.includes('sent')">
-                        <p :class="{'removed': message.status.includes('removed')}">{{message.message}}</p>
+                <div :class="message.status.includes('sent') ? 'output' : 'input'"
+                    v-for="(message, index) in contacts[activeContact].messages" :key="index">
+                    <p :class="{'removed': message.status.includes('removed')}">{{message.message}}</p>
 
-                        <div class="msg-info" v-if="!message.status.includes('removed')">
-                            <a aria-disabled="true" class="hidden">
-                                <i class="fa-solid fa-chevron-down"></i>
-                                <div class="msg-options">
-                                    <ul>
-                                        <li><h4>Info messaggio</h4></li>
-                                        <li @click="removeMessage(index)"><h4>Cancella messaggio</h4></li>
-                                    </ul>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="msg-time">
-                            <h6>{{hourMinute(message.date)}}</h6>
-                        </div>
+                    <div class="msg-info" v-if="!message.status.includes('removed')">
+                        <a aria-disabled="true" class="hidden">
+                            <i class="fa-solid fa-chevron-down"></i>
+                            <div class="msg-options">
+                                <ul>
+                                    <li><h4>Info messaggio</h4></li>
+                                    <li @click="removeMessage(index)"><h4>Cancella messaggio</h4></li>
+                                </ul>
+                            </div>
+                        </a>
                     </div>
-                   
-                    <div class="input" v-if="message.status.includes('received')">
-                        <p :class="{'removed': message.status.includes('removed')}">{{message.message}}</p>    
 
-                        <div class="msg-info" v-if="!message.status.includes('removed')">
-                            <a aria-disabled="true" class="hidden">
-                                <i class="fa-solid fa-chevron-down"></i>
-                                <div class="msg-options">
-                                    <ul>
-                                        <li><h4>Info messaggio</h4></li>
-                                        <li @click="removeMessage(index)"><h4>Cancella messaggio</h4></li>
-                                    </ul>
-                                </div>
-                            </a>
-                        </div>
-    
-                        <div class="msg-time">
-                            <h6>{{hourMinute(message.date)}}</h6>
-                        </div>
+                    <div class="msg-time">
+                        <h6>{{hourMinute(message.date)}}</h6>
                     </div>
-                </template>
+                </div>
             </div>
 
             <form method="submit" @submit.prevent>
