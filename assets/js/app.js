@@ -168,9 +168,10 @@ createApp({
 
         searchContact() {
             this.contacts.forEach(contact => contact.visible = contact.name.toLowerCase().startsWith(this.searchContactText.toLowerCase()) ? true : false);
-            window.onload = function() {
-            var chatLog = document.querySelector('.chat-log');
-            chatLog.scrollTop = chatLog.scrollHeight;
+            //wip working on scroll bar in chatlog 
+            /* window.onload = function() { 
+            let chatLog = document.querySelector('.chat-log');
+            chatLog.scrollTop = chatLog.scrollHeight; */
           };
         },
 
