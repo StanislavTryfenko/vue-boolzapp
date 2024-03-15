@@ -141,7 +141,7 @@ createApp({
         newMessage() {
             if (this.newMessageText.length > 0 ) {
                 this.contacts[this.activeContact].messages.push({
-                    date: 'luxor working',
+                    date: DateTime.now().toFormat('dd/MM/yyyy HH:mm:ss'),
                     message: this.newMessageText,
                     status: 'sent',
                 });  
@@ -151,7 +151,7 @@ createApp({
             
             setTimeout(() => {
                 this.contacts[this.activeContact].messages.push({
-                    date: 'luxor working',
+                    date: DateTime.now().toFormat('dd/MM/yyyy HH:mm:ss'),
                     message: 'Tante care cose a te e famiglia',
                     status: 'received',
                 });
