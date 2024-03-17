@@ -183,10 +183,10 @@ createApp({
                 document.getElementById('chatLog').scrollTop = document.getElementById('chatLog').scrollHeight;
             });
         },
-
         hourMinute(time) {
             return DateTime.fromFormat(time, 'dd/MM/yyyy HH:mm:ss').toFormat('HH:mm');
         },
+
     },
     mounted() {
     },

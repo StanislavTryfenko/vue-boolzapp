@@ -36,21 +36,22 @@
                 <div class="search-bar">
                     <form method="submit" @submit.prevent>
                     <a aria-disabled="true"><i class="fa-solid fa-magnifying-glass fa-lg"></i></a>
-                    <input type="text" placeholder="Cerca o inizia una nuova chat" v-model.trim="searchContactText" @keyup="searchContact()">
+                    <input type="text" placeholder="Cerca o inizia una nuova chat" 
+                    v-model.trim="searchContactText" @keyup="searchContact()">
                     </form>
                 </div>
             </div>
 
             <div class="contacts" >
                 <div :class="contact.visible === true ? 'contact-card' : 'contact-card-hidden'" 
-                    v-for="(contact, index) in contacts" 
-                    @click="activeContact = index, scrollBarChatLog()">
+                v-for="(contact, index) in contacts" 
+                @click="activeContact = index, scrollBarChatLog()">
                     <img :src="'./assets/img/' + contact.avatar">
                     <div class="d-none">
                         <h4>{{contact.name}}</h4>
                         <h5>{{contact.messages.slice(-1)[0].message}}</h5>
                         <div class="contact-time">
-                            <h5>{{hourMinute(contact.messages[0].date)}}</h5>
+                            <h5>{{hourMinute(contact.messages[contact.messages.length - 1].date)}}</h5>
                         </div>
                     </div>
                 </div>
