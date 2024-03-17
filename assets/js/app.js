@@ -168,10 +168,13 @@ createApp({
 
         searchContact() {
             this.contacts.forEach(contact => contact.visible = contact.name.toLowerCase().startsWith(this.searchContactText.toLowerCase()) ? true : false);
-            //wip working on scroll bar in chatlog 
-            /* window.onload = function() { 
-            let chatLog = document.querySelector('.chat-log');
-            chatLog.scrollTop = chatLog.scrollHeight; */
+        },
+
+        scrollBarChatLog(){
+            // https://vuejs.org/api/component-instance.html#nexttick (da approfondire)
+            this.$nextTick(() => {
+                document.getElementById('chatLog').scrollTop = document.getElementById('chatLog').scrollHeight;
+            });
         },
 
         hourMinute(time) {
