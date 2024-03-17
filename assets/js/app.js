@@ -146,7 +146,7 @@ createApp({
                     status: 'sent',
                 });  
             };
-
+            
             this.newMessageText = '';
             
             setTimeout(() => {
@@ -155,7 +155,14 @@ createApp({
                     message: 'Tante care cose a te e famiglia',
                     status: 'received',
                 });
-            }, 1000);   
+            }, 1000);
+
+            //setting on position 0 a contact when send him a message (will need improvement for receiving messages)
+            this.$nextTick(() => {
+                const setFirst = this.contacts.splice(this.activeContact, 1)[0];
+                this.contacts.unshift(setFirst);
+                this.activeContact = 0;
+            });
         },
 
         removeMessage(index){
@@ -171,7 +178,7 @@ createApp({
         },
 
         scrollBarChatLog(){
-            // https://vuejs.org/api/component-instance.html#nexttick (da approfondire)
+            // https://vuejs.org/api/component-instance.html#nexttick (da approfondire, non ci siamo ancora arrivati)
             this.$nextTick(() => {
                 document.getElementById('chatLog').scrollTop = document.getElementById('chatLog').scrollHeight;
             });
